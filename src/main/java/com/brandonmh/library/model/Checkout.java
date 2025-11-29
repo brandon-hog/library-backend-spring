@@ -13,15 +13,18 @@ public class Checkout {
     private Long id;
 
     @ManyToOne
-    private Long book;
+    private Book book;
 
     @ManyToOne
-    private Long user;
+    private User user;
 
     private Date checkoutDate;
     private Date returnDate;
 
-    public Checkout(Long id, Long book, Long user, Date checkoutDate, Date returnDate) {
+    public Checkout() {
+    }
+
+    public Checkout(Long id, Book book, User user, Date checkoutDate, Date returnDate) {
         this.id = id;
         this.book = book;
         this.user = user;
@@ -38,19 +41,19 @@ public class Checkout {
         this.id = id;
     }
 
-    public Long getBook() {
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(Long book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 
-    public Long getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Long user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
