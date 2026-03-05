@@ -62,7 +62,7 @@ codebase.
 The database being used is a PostgresDB, and the server uses the Spring Data JPA with Hibernate to interact with the Database.
 
 #### 2.2.2.1 ER Diagram
-![ER Diagram of the current implementation in the database](./docs/er_diagram.png)
+![ER Diagram of the current implementation in the database](./backend/docs/er_diagram.png)
 
 ## 2.3 Authentication and Authorization
 The security posture of this API relies on Spring Security.

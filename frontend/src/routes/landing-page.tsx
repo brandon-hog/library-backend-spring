@@ -1,12 +1,9 @@
 import { 
   BookOpen, 
   Search, 
-  ShieldCheck, 
-  Zap, 
   ArrowRight, 
   Library,
   Users,
-  Clock
 } from 'lucide-react';
 
 export default function LandingPage() {
