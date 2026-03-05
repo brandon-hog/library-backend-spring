@@ -20,9 +20,16 @@ export default function LandingPage() {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
           <a href="#stats" className="hover:text-blue-600 transition-colors">Statistics</a>
-          <button className="bg-slate-900 text-white px-5 py-2 rounded-full hover:bg-blue-600 transition-all shadow-sm">
-            Launch App
-          </button>
+          <a href="/register">
+            <button className="bg-slate-900 text-white px-5 py-2 rounded-full hover:bg-blue-600 transition-all shadow-sm">
+              Register
+            </button>
+          </a>
+          <a href="/login">
+            <button className="bg-slate-900 text-white px-5 py-2 rounded-full hover:bg-blue-600 transition-all shadow-sm">
+              Login
+            </button>
+          </a>
         </div>
       </nav>
 
