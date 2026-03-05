@@ -1,14 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-import LandingPage from "./routes/landing-page";
-import Register from "./routes/register";
+import HomePage from "./routes/home";
+import RegisterPage from "./routes/register";
+import LoginPage from "./routes/login";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: LandingPage,
+    Component: HomePage,
   },
   {
     path: "/register",
-    Component: Register
-  }
+    Component: RegisterPage
+  },
+  {
+    path: "/login",
+    Component: LoginPage
+  },
 ]);

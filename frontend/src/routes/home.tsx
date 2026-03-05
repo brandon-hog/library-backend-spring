@@ -6,7 +6,7 @@ import {
   Users,
 } from 'lucide-react';
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
     <div className="min-h-screen min-w-screen bg-slate-50 text-slate-900 font-sans">
       {/* --- NAVIGATION --- */}
