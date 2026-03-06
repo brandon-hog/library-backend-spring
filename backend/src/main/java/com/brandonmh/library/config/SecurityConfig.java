@@ -1,4 +1,4 @@
-package com.brandonmh.library.security;
+package com.brandonmh.library.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

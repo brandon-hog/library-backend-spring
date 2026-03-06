@@ -1,4 +1,4 @@
-package com.brandonmh.library.security;
+package com.brandonmh.library.service;
 
 import com.brandonmh.library.model.User;
 import com.brandonmh.library.repository.UserRepository;
