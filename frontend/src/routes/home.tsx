@@ -70,14 +70,10 @@ export default function HomePage() {
 
       {/* --- LIVE STATS BAR --- */}
       <section id="stats" className="bg-slate-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-blue-400 text-3xl font-bold">12k+</p>
             <p className="text-slate-400 text-sm uppercase tracking-widest mt-1">Total Books</p>
-          </div>
-          <div>
-            <p className="text-blue-400 text-3xl font-bold">2.4k</p>
-            <p className="text-slate-400 text-sm uppercase tracking-widest mt-1">Active Users</p>
           </div>
           <div>
             <p className="text-blue-400 text-3xl font-bold">99.9%</p>
