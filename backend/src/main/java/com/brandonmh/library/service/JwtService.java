@@ -33,7 +33,7 @@ public class JwtService {
 	@Value("${app.jwt.refresh-expiration}")
 	private long refreshExpirationMs;
 
-	private static final String TOKEN_PREFIX = "Bearer ";
+	public static final String TOKEN_PREFIX = "Bearer ";
 
 	public String generateAccessToken(Authentication auth) {
 		return generateToken(auth, jwtExpiration, null);
