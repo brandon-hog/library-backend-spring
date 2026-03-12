@@ -8,7 +8,7 @@ import {
   FieldLabel
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { useState, type SubmitEvent } from "react";
+import { useState, type FormEvent } from "react";
 import api from "@/api/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,8 @@ export function LoginForm({
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: SubmitEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       await api.post("/auth/login", { email, password });
       navigate("/book");
@@ -31,7 +32,7 @@ export function LoginForm({
   };
 
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
@@ -50,7 +51,7 @@ export function LoginForm({
           <Input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
         </Field>
         <Field>
-          <Button type="submit" onSubmit={handleSubmit}>Login</Button>
+          <Button type="submit">Login</Button>
         </Field>
         <FieldError errors={[{message: error}]} />
         <Field>
