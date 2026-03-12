@@ -51,7 +51,6 @@ The frontend uses Vite along with React Router for navigating to different pages
 - Also [Tailwind](https://tailwindcss.com/docs/installation/using-vite) is used alongside some [ShadCN components](https://ui.shadcn.com/docs/components)
 
 ## 2.2 Back-end
-
 This project is a Spring Boot app I made to learn Java Spring and other technologies connected to it. It uses a Spring Boot API, along with
 Spring Security, Spring Data JPA (Hibernate), and a Postgres Docker container for storing the data.
 
@@ -71,7 +70,7 @@ The database being used is a PostgresDB, and the server uses the Spring Data JPA
 The security posture of this API relies on Spring Security.
 
 ### 2.3.1 Authentication - Basic Auth
-**Stateless Basic Auth** is used within this project currently as the main auth mechanism. Cross-Site Request Forgery (CSRF) protection and Session Management (JSESSIONID) are intentionally disabled. The API requires the client to pass standard HTTP Basic Authentication headers on every secured request, preventing session hijacking vulnerabilities.
+**JWT Access Tokens** are used within this project using a custom JwtAuthenticationFilter added on to the SecurityFilterChain. Cross-Site Request Forgery (CSRF) protection and Session Management (JSESSIONID) are intentionally disabled. The API requires the client to provide their access token on every request.
 
 ### 2.3.2 Password Storage
 **Raw passwords are never stored in the database.** The system utilizes a BCryptPasswordEncoder to hash user credentials before persistence, neutralizing the threat of database leaks.
