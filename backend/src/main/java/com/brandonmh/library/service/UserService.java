@@ -2,7 +2,7 @@ package com.brandonmh.library.service;
 
 import com.brandonmh.library.dto.LoginRequest;
 import com.brandonmh.library.dto.RegisterRequest;
-import com.brandonmh.library.dto.TokenPair;
+import com.brandonmh.library.dto.Token;
 import com.brandonmh.library.dto.UserResponse;
 import com.brandonmh.library.model.User;
 import com.brandonmh.library.repository.UserRepository;
@@ -62,7 +62,7 @@ public class UserService {
         return userRes;
     }
     
-    public TokenPair login(LoginRequest loginRequest) {
+    public Token login(LoginRequest loginRequest) {
         // Authenticate the user
         Authentication auth = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
@@ -72,7 +72,7 @@ public class UserService {
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         // Generate the token pair
-        return jwtService.generateTokenPair(auth);
+        return jwtService.generateToken(auth);
     }
 
     public User update(Long id, User user) {

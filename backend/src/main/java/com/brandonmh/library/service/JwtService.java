@@ -11,9 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.brandonmh.library.dto.TokenPair;
+import com.brandonmh.library.dto.Token;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -75,16 +74,6 @@ public class JwtService {
 		return false;
 	}
 
-	public boolean isRefreshToken(String token) {
-		Claims claims = Jwts.parser()
-							.verifyWith(getSignInKey())
-							.build()
-							.parseSignedClaims(token)
-							.getPayload();
-		
-		return "refresh".equals(claims.get("tokenType"));
-}
-
 	public String generateToken(Authentication auth, long expirationMs, Map<String, String> claims) {
 		UserDetails userPrincipal = (UserDetails) auth.getPrincipal();
 
@@ -117,9 +106,8 @@ public class JwtService {
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 
-    public TokenPair generateTokenPair(Authentication auth) {
+    public Token generateToken(Authentication auth) {
         String accessToken = generateAccessToken(auth);
-		String refreshToken = generateRefreshToken(auth);
-		return new TokenPair(accessToken, refreshToken);
+		return new Token(accessToken);
     }
 }

@@ -2,7 +2,7 @@ package com.brandonmh.library.controller;
 
 import com.brandonmh.library.dto.LoginRequest;
 import com.brandonmh.library.dto.RegisterRequest;
-import com.brandonmh.library.dto.TokenPair;
+import com.brandonmh.library.dto.Token;
 import com.brandonmh.library.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,8 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody LoginRequest loginRequest) {
         // Authenticate the user
-        TokenPair tokenPair = userService.login(loginRequest);
+        Token token = userService.login(loginRequest);
         // Return access token
-        return ResponseEntity.ok(tokenPair);
+        return ResponseEntity.ok(token);
     }
 }
