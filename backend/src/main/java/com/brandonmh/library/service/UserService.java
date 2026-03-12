@@ -65,7 +65,7 @@ public class UserService {
     public TokenPair login(LoginRequest loginRequest) {
         // Authenticate the user
         Authentication auth = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+            new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
         );
 
         // Set the authentication in the security context

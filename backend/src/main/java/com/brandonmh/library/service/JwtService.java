@@ -92,6 +92,9 @@ public class JwtService {
 		Date expiryDate = new Date(now.getTime() + expirationMs);
 
 		return Jwts.builder()
+				.header()
+				.add("typ", "JWT")
+				.and()
 				.subject(userPrincipal.getUsername())
 				.claims(claims)
 				.issuedAt(now)
