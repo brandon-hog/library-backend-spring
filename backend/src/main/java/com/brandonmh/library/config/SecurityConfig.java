@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.brandonmh.library.filter.JwtAuthenticationFilter;
 
@@ -45,6 +47,21 @@ public class SecurityConfig {
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) {
 		return authConfig.getAuthenticationManager();
 	}
+	
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry
+				.addMapping("/**")
+				.allowedOrigins("http://localhost:80", "http://localhost")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // OPTIONS required for preflight
+				.allowCredentials(true)
+				.maxAge(3600);
+			}
+		};
+	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -56,8 +73,8 @@ public class SecurityConfig {
 				.anyRequest().authenticated()
 			)
 			.authenticationProvider(authenticationProvider())
-			.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-			.httpBasic(Customizer.withDefaults());
+			.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+			// .httpBasic(Customizer.withDefaults());
 
 		return http.build();
 	}
