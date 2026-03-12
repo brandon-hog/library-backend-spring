@@ -29,7 +29,7 @@ export default function BookListPage() {
     const fetchBooks = async () => {
       try {
         const response = await api.get<BookPage>("/book", {
-          params: { page, size: 10 },
+          params: { page, size: 9 },
         });
         setBooks(response.data.content);
         setTotalPages(response.data.totalPages);
@@ -85,7 +85,7 @@ export default function BookListPage() {
       </div>
 
       <div className="flex h-full flex-col space-y-4 w-full">
-        <div className="grid flex-1 w-full content-start gap-4 grid-cols-3">
+        <div className="grid flex-1 h-full w-full content-start gap-4 grid-cols-3">
           {books.map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
