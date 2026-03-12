@@ -33,7 +33,7 @@ public class BookController {
         @PageableDefault(size = 20) Pageable pageable,
         @RequestParam(required = false) String search
     ) {
-        return bookService.getBooks(pageable, search);
+        return bookService.getBooks(pageable, search, search);
     }
 
     @GetMapping("/{id}")
